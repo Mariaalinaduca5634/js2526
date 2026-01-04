@@ -10,17 +10,16 @@
 <body>
     <script>
         let n;
-        let suma = 0;
-        n = +window.prompt("va rugam introduceti un numar n", 10)
-
-        for (let i = 1; i <= n; i++) {
-            document.write(i);
+        let i = 0;
+        n = eval(prompt('va rugam sa introduceti un numar', 2));
+        while (i < n) {
             if (i % 2 == 0) {
-                suma = suma + i;
-            }
+                // document.write(' <p> nume impare: ' +i+'</p>'');
+                document.write(`<p> numere impare: ${i}</p>`);
 
+            }
+            i++;
         }
-        document.write('<p>Suma este: ' + suma + '</p>')
     </script>
 </body>
 
