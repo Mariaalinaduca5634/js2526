@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1
+        // x = 5;
+        // console.log(x);
+        // var x;
+
+
+        //2
+        // x = 5;
+        //var x;
+
+        //console.log(x);
+
+
+
+        //3
+        // console.log(x);
+        //let x;
+        //x = 5;
+        //4
+        //for (i = 0, j = 10, u = 25; i < 20 && j < 30 && u > 15; i += 2, j += 4, u--) {
+        //  console.log("i:" + i + " j:" + j + " u:" + u);
+        //}
+
+        /*var myArr = ['Laptop', 'Tv', 'Mobile', 'Desktop'];
+        myArr[5] = 'Book';
+        myArr[3] = 'Mouse';
+        myArr[8] = 'Tastatura';
+        myArr['birou'] = 'Birou';
+        var newArr = {
+            0: 'a',
+            1: 'b',
+            2: 'c'
+        };
+
+        for (let i = 0; i < myArr.length; i++) {
+            if ((typeof myArr[i]) != 'undefined'){
+                document.write('<p>' + myArr[i] + '</p>')
+            }
+        }
+        console.log(typeof myArr);
+        console.log(myArr);
+        console.log(typeof newArr);
+        console.log(newArr);
+
+        let myArr = [3, 7, 10, 2, 9];
+
+        let newArrPare = myArr.filter(x => x % 2  === 0);
+        console.log(newArrPare);
+
+        let newArrImpare = myArr.filter(x => x % 2  !== 0);
+        console.log(newArrImpare);
+
+        let newArrx3 = myArr.map(x=> x * 3);
+        console.log(newArrx3);
+
+        let suma = myArr.reduce((acc, x) => acc + x, 0);
+        console.log(suma);*/
+
+        let myArr = [4, 11, 8, 3, 20, 7, 14, 9,];
+
+        let newArrPare = myArr.filter(x => x % 2 === 0);
+        console.log(newArrPare);
+        
+        let newArrImpare = myArr.filter(x => x % 2 !== 0);
+        console.log(newArrImpare);
+
+        let newArrDublate = myArr.map(x => x * 2);
+        console.log(newArrDublate);
+
+        let suma = myArr.reduce((acc, x) => acc + x, 0);
+        console.log(suma);
+
+        let newArrMaiMariCa10 = myArr.filter(x => x > 10);
+        console.log(newArrMaiMariCa10);
+
+
+    </script>
+    
+</body>
+
+</html>

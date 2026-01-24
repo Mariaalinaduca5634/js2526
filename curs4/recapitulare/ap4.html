@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bubble Sort Animat</title>
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+      min-height:100vh;
+      padding:30px;
+    }
+
+    h1{
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    .container{
+      width: 90%;
+      max-width: 800px;
+      margin-top: 30px;
+    }
+
+    .bars{
+      display:flex;
+      align-items:flex-end;
+      gap: 10px;
+      height: 250px;
+      padding: 20px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 15px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .bar{
+      width: 50px;
+      border-radius: 10px 10px 0 0;
+      background: #38bdf8;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      font-weight:bold;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .bar span{
+      position:absolute;
+      bottom:-30px;
+      font-size: 16px;
+    }
+
+    .bar.active{
+      background: #facc15;
+      transform: translateY(-10px);
+    }
+
+    .bar.swap{
+      background: #fb7185;
+    }
+
+    .bar.done{
+      background: #4ade80;
+    }
+
+    button{
+      margin-top: 20px;
+      padding: 12px 18px;
+      font-size: 16px;
+      border:none;
+      border-radius: 10px;
+      cursor:pointer;
+      background:#22c55e;
+      color:white;
+      font-weight:bold;
+      transition: 0.2s;
+    }
+
+    button:hover{
+      background:#16a34a;
+    }
+
+    button:disabled{
+      background: gray;
+      cursor:not-allowed;
+    }
+
+    .info{
+      margin-top: 15px;
+      font-size: 16px;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🫧 Bubble Sort Animat (Desen animat)</h1>
+  <div class="info" id="info">Apasă „Start” ca să vezi cum se sortează.</div>
+
+  <div class="container">
+    <div class="bars" id="bars"></div>
+    <button id="startBtn">Start</button>
+  </div>
+
+  <script>
+    let myArray = [5, 2, 9, 1, 5, 6, 11, 17, 21];
+    const barsContainer = document.getElementById("bars");
+    const startBtn = document.getElementById("startBtn");
+    const info = document.getElementById("info");
+
+    function sleep(ms){
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function drawBars(arr){
+      barsContainer.innerHTML = "";
+      const max = Math.max(...arr);
+
+      arr.forEach((value) => {
+        const bar = document.createElement("div");
+        bar.classList.add("bar");
+
+        // înălțime proporțională
+        bar.style.height = (value / max) * 200 + "px";
+
+        const label = document.createElement("span");
+        label.textContent = value;
+
+        bar.appendChild(label);
+        barsContainer.appendChild(bar);
+      });
+    }
+
+    async function bubbleSortAnimated(arr){
+      let len = arr.length;
+      let bars = document.querySelectorAll(".bar");
+
+      for (let i = 0; i < len - 1; i++) {
+
+        for (let j = 0; j < len - 1 - i; j++) {
+
+          bars = document.querySelectorAll(".bar");
+
+          // evidențiem 2 elemente comparate
+          bars[j].classList.add("active");
+          bars[j + 1].classList.add("active");
+          info.textContent = `Compar: ${arr[j]} și ${arr[j+1]}`;
+
+          await sleep(600);
+
+          if (arr[j] > arr[j + 1]) {
+            info.textContent = `Schimb: ${arr[j]} ↔ ${arr[j+1]}`;
+
+            // culoare de swap
+            bars[j].classList.add("swap");
+            bars[j + 1].classList.add("swap");
+
+            await sleep(400);
+
+            // swap în array
+            let temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+
+            // redesenăm ca să se vadă schimbarea
+            drawBars(arr);
+
+            await sleep(600);
+          }
+
+          // scoatem highlight
+          bars = document.querySelectorAll(".bar");
+          bars[j].classList.remove("active", "swap");
+          bars[j + 1].classList.remove("active", "swap");
+        }
+
+        // elementul de la final e "gata"
+        bars = document.querySelectorAll(".bar");
+        bars[len - 1 - i].classList.add("done");
+      }
+
+      // primul element rămâne
+      bars = document.querySelectorAll(".bar");
+      bars[0].classList.add("done");
+
+      info.textContent = "✅ Gata! Array-ul este sortat.";
+    }
+
+    drawBars(myArray);
+
+    startBtn.addEventListener("click", async () => {
+      startBtn.disabled = true;
+      await bubbleSortAnimated(myArray);
+    });
+  </script>
+
+</body>
+</html>
