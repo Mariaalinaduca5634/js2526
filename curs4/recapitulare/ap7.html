@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+
+<body>
+
+    <id id="demo"></id>
+    <script>
+        let myDemo = document.getElementById('demo');
+        const tari = [
+            {
+                name: 'Afghanistan',
+                capital: 'Kabul',
+                languages: ['Pashto', 'Uzbek', 'Turkmen'],
+                population: 27657145,
+                flag: 'https://restcountries.eu/data/afg.svg',
+                currency: 'Afghan afghani'
+            },
+            {
+                name: 'Aland Islands',
+                capital: 'Marieham',
+                languages: ['Swedish'],
+                population: 28875,
+                flag: 'https:// restcountries.eu/data/ala.svg',
+                currency: 'Euro'
+            },
+
+        ]
+
+        myDemo.innerHTML = `
+        <p> Nume : ${tari[0].name} </p>
+        <p> Capitala : ${tari[0].capital} </p>
+        <p> Nume : ${tari[1].name} </p>
+        <p> Capitala : ${tari[1].capital} </p>
+        <p> Populatie : ${tari[1].population} </p>
+        `;
+    </script>
+</body>
+
+</html>
