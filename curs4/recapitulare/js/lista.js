@@ -1,6 +1,6 @@
-const countriesData = [
+const data = [
   {
-    "name": "Romania",
+    "title": "Romania",
     "capital": "Bucharest",
     "languages": ["Romanian"],
     "population": 19000000,
@@ -8,7 +8,7 @@ const countriesData = [
     "currency": "Romanian leu"
   },
   {
-    "name": "Germany",
+    "title": "Germany",
     "capital": "Berlin",
     "languages": ["German"],
     "population": 84000000,
@@ -16,7 +16,7 @@ const countriesData = [
     "currency": "Euro"
   },
   {
-    "name": "France",
+    "title": "France",
     "capital": "Paris",
     "languages": ["French"],
     "population": 68000000,
